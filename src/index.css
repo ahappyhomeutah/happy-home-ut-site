@@ -14,9 +14,9 @@
     --foreground: 215 35% 22%;
 
     --brand: 214 41% 76%;            /* #a7bddb — exact logo blue */
-    --brand-deep: 218 55% 45%;       /* darker accent */
-    --brand-soft: 212 70% 95%;       /* very soft tint */
-    --brand-ink: 218 40% 20%;        /* readable dark blue text */
+    --brand-deep: 214 38% 52%;       /* same hue, deeper — harmonizes w/ logo */
+    --brand-soft: 214 60% 96%;       /* very soft tint of logo blue */
+    --brand-ink: 214 35% 28%;        /* readable dark blue text, same hue family */
 
     --card: 0 0% 100%;
     --card-foreground: 215 35% 22%;
@@ -45,15 +45,15 @@
 
     --radius: 1.25rem;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(212 65% 72%) 0%, hsl(218 60% 58%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(212 75% 97%) 0%, hsl(0 0% 100%) 100%);
-    --gradient-card: linear-gradient(160deg, hsl(212 80% 98%) 0%, hsl(0 0% 100%) 100%);
+    /* Gradients — all built from the logo blue (#a7bddb) for a cohesive flow */
+    --gradient-hero: linear-gradient(135deg, hsl(214 50% 82%) 0%, hsl(214 41% 76%) 50%, hsl(214 40% 64%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(214 60% 97%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-card: linear-gradient(160deg, hsl(214 70% 98%) 0%, hsl(0 0% 100%) 100%);
 
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(212 50% 60% / 0.12);
-    --shadow-card: 0 10px 30px -12px hsl(212 50% 50% / 0.18);
-    --shadow-glow: 0 20px 60px -20px hsl(212 70% 60% / 0.45);
+    /* Shadows — tinted with logo hue */
+    --shadow-soft: 0 4px 20px -4px hsl(214 41% 60% / 0.15);
+    --shadow-card: 0 10px 30px -12px hsl(214 41% 50% / 0.20);
+    --shadow-glow: 0 20px 60px -20px hsl(214 45% 60% / 0.45);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
