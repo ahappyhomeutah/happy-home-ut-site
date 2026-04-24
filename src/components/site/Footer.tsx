@@ -8,10 +8,16 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-white rounded-2xl p-1.5">
-                <img src={logo} alt="A Happy Home" width={40} height={40} className="h-10 w-10" />
-              </div>
-              <span className="font-display font-bold text-xl">A Happy Home</span>
+              <img
+                src={logo}
+                alt="A Happy Home"
+                width={112}
+                height={112}
+                loading="lazy"
+                decoding="async"
+                className="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-xl shrink-0"
+              />
+              <span className="font-display font-bold text-lg sm:text-xl">A Happy Home</span>
             </div>
             <p className="text-white/75 max-w-md leading-relaxed">
               Person-centered residential support for adults with disabilities across Utah.
