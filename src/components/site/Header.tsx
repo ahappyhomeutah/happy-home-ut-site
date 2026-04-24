@@ -28,8 +28,8 @@ const Header = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-smooth",
         scrolled
-          ? "bg-brand/95 backdrop-blur-md shadow-soft border-b border-brand-deep/10"
-          : "bg-brand/80 backdrop-blur-sm"
+          ? "bg-background/95 backdrop-blur-md shadow-soft border-b border-border"
+          : "bg-background/90 backdrop-blur-sm border-b border-border/50"
       )}
     >
       <div className="container flex h-16 sm:h-20 items-center justify-between">
