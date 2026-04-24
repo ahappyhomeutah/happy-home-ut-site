@@ -28,14 +28,22 @@ const Header = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-smooth",
         scrolled
-          ? "bg-background/85 backdrop-blur-md shadow-soft border-b border-border"
-          : "bg-background/40 backdrop-blur-sm"
+          ? "bg-brand/95 backdrop-blur-md shadow-soft border-b border-brand-deep/10"
+          : "bg-brand/80 backdrop-blur-sm"
       )}
     >
-      <div className="container flex h-20 items-center justify-between">
-        <a href="#home" className="flex items-center gap-3">
-          <img src={logo} alt="A Happy Home logo" width={48} height={48} className="h-12 w-12" />
-          <span className="font-display font-bold text-lg sm:text-xl text-brand-ink">
+      <div className="container flex h-16 sm:h-20 items-center justify-between">
+        <a href="#home" className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <img
+            src={logo}
+            alt="A Happy Home logo"
+            width={96}
+            height={96}
+            loading="eager"
+            decoding="async"
+            className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-contain shrink-0"
+          />
+          <span className="font-display font-bold text-base sm:text-lg lg:text-xl text-brand-ink truncate">
             A Happy Home
           </span>
         </a>
