@@ -62,7 +62,7 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           <Button asChild variant="ghost" size="sm" className="text-brand-deep hover:bg-brand-soft">
-            <a href="tel:+18015550123"><Phone className="w-4 h-4 mr-1.5" /> Call Now</a>
+            <a href="tel:+18016997228"><Phone className="w-4 h-4 mr-1.5" /> Call Now</a>
           </Button>
           <Button asChild variant="brand" size="sm">
             <a href="#contact">Contact Us</a>
@@ -93,7 +93,7 @@ const Header = () => {
             ))}
             <div className="flex gap-2 mt-3 pt-3 border-t border-border">
               <Button asChild variant="outline" className="flex-1">
-                <a href="tel:+18015550123"><Phone className="w-4 h-4 mr-1.5" /> Call</a>
+                <a href="tel:+18016997228"><Phone className="w-4 h-4 mr-1.5" /> Call</a>
               </Button>
               <Button asChild variant="brand" className="flex-1">
                 <a href="#contact" onClick={() => setOpen(false)}>Contact</a>

@@ -39,8 +39,8 @@ const Footer = () => {
           <div>
             <div className="font-display font-semibold mb-3">Get in Touch</div>
             <ul className="space-y-2 text-white/75 text-sm">
-              <li><a href="tel:+18015550123" className="flex items-center gap-2 hover:text-white"><Phone className="w-4 h-4" /> (801) 555-0123</a></li>
-              <li><a href="mailto:hello@ahappyhome.example" className="flex items-center gap-2 hover:text-white"><Mail className="w-4 h-4" /> Email us</a></li>
+              <li><a href="tel:+18016997228" className="flex items-center gap-2 hover:text-white"><Phone className="w-4 h-4" /> (801) 699-7228</a></li>
+              <li><a href="mailto:Jack@ahappyhomeutah.com" className="flex items-center gap-2 hover:text-white"><Mail className="w-4 h-4" /> Email us</a></li>
               <li><a href="https://instagram.com/ahappyhome.ut" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white"><Instagram className="w-4 h-4" /> @ahappyhome.ut</a></li>
               <li className="pt-2 text-white/60">Service area: Utah</li>
             </ul>
