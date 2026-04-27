@@ -59,10 +59,10 @@ const Contact = () => {
         <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
           {/* Contact info */}
           <div className="lg:col-span-2 space-y-4">
-            <a href="tel:+18015550123" className="block bg-gradient-hero rounded-3xl p-7 text-white shadow-card hover:shadow-glow transition-smooth">
+            <a href="tel:+18016997228" className="block bg-gradient-hero rounded-3xl p-7 text-white shadow-card hover:shadow-glow transition-smooth">
               <Phone className="w-7 h-7 mb-3" />
-              <div className="font-display font-bold text-xl mb-1">Call A Happy Home</div>
-              <div className="text-white/90">(801) 555-0123</div>
+              <div className="font-display font-bold text-xl mb-1">Call The Owner! </div>
+              <div className="text-white/90">801-699-7228</div>
               <div className="text-sm text-white/75 mt-2">Mon–Fri, 9am – 5pm MT</div>
             </a>
             <a href="mailto:hello@ahappyhome.example" className="block bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth">
