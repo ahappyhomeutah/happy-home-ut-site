@@ -65,10 +65,10 @@ const Contact = () => {
               <div className="text-white/90">801-699-7228</div>
               <div className="text-sm text-white/75 mt-2">Mon–Fri, 9am – 5pm MT</div>
             </a>
-            <a href="mailto:hello@ahappyhome.example" className="block bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth">
+            <a href="mailto:Jack@ahappyhomeutah.com" className="block bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth">
               <Mail className="w-7 h-7 mb-3 text-brand-deep" />
               <div className="font-display font-bold text-xl text-brand-ink mb-1">Email Us</div>
-              <div className="text-muted-foreground break-all">hello@ahappyhome.example</div>
+              <div className="text-muted-foreground break-all">Jack@ahappyhomeutah.com</div>
               <div className="text-sm text-muted-foreground mt-2">We reply within one business day</div>
             </a>
             <div className="bg-brand-soft rounded-3xl p-7">
