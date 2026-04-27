@@ -45,10 +45,10 @@ const Hero = () => {
           <div className="absolute inset-0 bg-white/20 rounded-[2rem] blur-2xl" />
           <img
             src={heroImg}
-            alt="Warm and welcoming living room of A Happy Home"
-            width={1280}
-            height={960}
-            className="relative rounded-[2rem] shadow-glow w-full h-auto object-cover border-4 border-white/40"
+            alt="Adults playing wheelchair basketball together outdoors"
+            width={540}
+            height={360}
+            className="relative rounded-[2rem] shadow-glow w-full h-[420px] sm:h-[480px] lg:h-[520px] object-cover border-4 border-white/40"
           />
           <div className="absolute -bottom-6 -left-6 bg-background rounded-2xl shadow-card p-4 flex items-center gap-3 max-w-[240px] hidden sm:flex">
             <div className="w-12 h-12 rounded-full bg-brand-soft flex items-center justify-center shrink-0">
