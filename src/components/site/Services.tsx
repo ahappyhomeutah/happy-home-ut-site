@@ -8,8 +8,8 @@ const services = [
   },
   {
     icon: Sun,
-    title: "Daily Living & Routines",
-    desc: "Consistent morning and evening routines, meals, hygiene, household tasks, and the small things that make a day feel good.",
+    title: "Day Program ",
+    desc: "Outings, hobbies, friendships, and skill-building so each person stays connected to the wider community.",
   },
   {
     icon: Pill,
@@ -19,7 +19,7 @@ const services = [
   {
     icon: Users,
     title: "Community Access & Skills",
-    desc: "Outings, hobbies, friendships, and skill-building so each person stays connected to the wider community.",
+    desc: "Consistent morning and evening routines, meals, hygiene, household tasks, and the small things that make a day feel good.",
   },
   {
     icon: Wallet,
