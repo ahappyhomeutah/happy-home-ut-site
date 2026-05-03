@@ -16,11 +16,11 @@ const About = () => {
           <div className="absolute -inset-4 bg-brand/20 rounded-[2rem] blur-2xl" />
           <img
             src={aboutImg}
-            alt="Welcoming front porch of a residential home"
-            width={1024}
-            height={768}
+            alt="Caregiver sharing a joyful moment with a young man in a wheelchair outdoors"
+            width={1000}
+            height={667}
             loading="lazy"
-            className="relative rounded-[2rem] shadow-card w-full h-auto object-cover"
+            className="relative rounded-[2rem] shadow-card w-full h-[28rem] lg:h-[32rem] object-cover object-center"
           />
         </div>
 
