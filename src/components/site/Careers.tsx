@@ -29,7 +29,7 @@ const Careers = () => {
             <div className="grid grid-cols-3 gap-4">
               {[
                 { icon: Heart, label: "Meaningful work" },
-                { icon: Users, label: "Supportive team" },
+                { icon: Users, label: "Impactful work" },
                 { icon: Sparkles, label: "Room to grow" },
               ].map((p) => (
                 <div key={p.label} className="bg-white/15 backdrop-blur-sm border border-white/25 rounded-2xl p-3 sm:p-5 text-center">
