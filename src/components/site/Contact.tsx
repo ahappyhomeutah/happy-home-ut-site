@@ -65,6 +65,18 @@ const Contact = () => {
               <div className="text-white/90">801-699-7228</div>
               <div className="text-sm text-white/75 mt-2">Mon–Fri, 9am – 5pm MT</div>
             </a>
+            <div className="flex justify-center py-2">
+              <div className="relative">
+                <div className="absolute inset-0 bg-brand-deep/20 rounded-full blur-2xl scale-110" />
+                <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-background shadow-glow bg-brand-soft">
+                  <img
+                    src="/placeholder.svg"
+                    alt="Owner"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+              </div>
+            </div>
             <a href="mailto:Jack@ahappyhomeutah.com" className="block bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth">
               <Mail className="w-7 h-7 mb-3 text-brand-deep" />
               <div className="font-display font-bold text-xl text-brand-ink mb-1">Email Us</div>
