@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Sparkles, Users } from "lucide-react";
+
 
 const Careers = () => {
   return (
