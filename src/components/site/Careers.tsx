@@ -32,9 +32,9 @@ const Careers = () => {
                 { icon: Users, label: "Supportive team" },
                 { icon: Sparkles, label: "Room to grow" },
               ].map((p) => (
-                <div key={p.label} className="bg-white/15 backdrop-blur-sm border border-white/25 rounded-2xl p-5 text-center">
+                <div key={p.label} className="bg-white/15 backdrop-blur-sm border border-white/25 rounded-2xl p-3 sm:p-5 text-center">
                   <p.icon className="w-6 h-6 mx-auto mb-2" />
-                  <div className="text-sm font-semibold">{p.label}</div>
+                  <div className="text-[11px] sm:text-sm font-semibold leading-tight break-words hyphens-auto">{p.label}</div>
                 </div>
               ))}
             </div>
