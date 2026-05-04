@@ -24,6 +24,20 @@ const Careers = () => {
               <Button asChild variant="onBrand" size="xl">
                 <a href="#contact">Ask About Open Positions</a>
               </Button>
+
+              <div className="mt-10 flex flex-col items-start gap-3">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl scale-110" />
+                  <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-white/30 shadow-glow bg-white/10 backdrop-blur-sm">
+                    <img
+                      src="/placeholder.svg"
+                      alt="Owner"
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                </div>
+                <p className="text-sm text-white/80">Contact the owner</p>
+              </div>
             </div>
 
           </div>
