@@ -2,7 +2,6 @@ import { Instagram, Camera, Sun, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const cards = [
-  { icon: Heart, title: "Little wins", desc: "Celebrating the goals that matter most." },
   { icon: Camera, title: "Out & about", desc: "Community outings and friendships." },
 ];
 
