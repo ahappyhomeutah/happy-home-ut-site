@@ -60,17 +60,21 @@ const Contact = () => {
         <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
           {/* Contact info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex justify-center py-2">
+            <div className="flex flex-col items-center py-2">
               <div className="relative">
                 <div className="absolute inset-0 bg-brand-deep/20 rounded-full blur-2xl scale-110" />
                 <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-background shadow-glow bg-brand-soft">
                   <img
                     src={ownerImg}
-                    alt="Owner of A Happy Home"
+                    alt="Jack Johnson, Director of A Happy Home"
                     className="w-full h-full object-cover"
                     style={{ objectPosition: "center 75%" }}
                   />
                 </div>
+              </div>
+              <div className="mt-3 text-center">
+                <div className="font-display font-bold text-brand-ink">Jack Johnson</div>
+                <div className="text-sm text-muted-foreground">Director</div>
               </div>
             </div>
             <a href="tel:+18016997228" className="block bg-gradient-hero rounded-3xl p-7 text-white shadow-card hover:shadow-glow transition-smooth">
