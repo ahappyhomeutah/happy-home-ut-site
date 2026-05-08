@@ -20,7 +20,7 @@ const About = () => {
             width={1000}
             height={667}
             loading="lazy"
-            className="relative rounded-[2rem] shadow-card w-full h-[28rem] lg:h-[32rem] object-cover object-center lg:-ml-8"
+            className="relative rounded-[2rem] shadow-card w-full h-[28rem] lg:h-[32rem] object-cover object-left lg:-ml-8"
           />
         </div>
 
