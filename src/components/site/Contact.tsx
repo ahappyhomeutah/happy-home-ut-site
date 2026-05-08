@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Phone, Mail, Send, CheckCircle2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import ownerImg from "@/assets/owner.jpg";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -64,9 +65,9 @@ const Contact = () => {
                 <div className="absolute inset-0 bg-brand-deep/20 rounded-full blur-2xl scale-110" />
                 <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-background shadow-glow bg-brand-soft">
                   <img
-                    src="/placeholder.svg"
-                    alt="Owner"
-                    className="w-full h-full object-cover object-center"
+                    src={ownerImg}
+                    alt="Owner of A Happy Home"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
               </div>
