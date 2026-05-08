@@ -67,7 +67,8 @@ const Contact = () => {
                   <img
                     src={ownerImg}
                     alt="Owner of A Happy Home"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: "center 75%" }}
                   />
                 </div>
               </div>
