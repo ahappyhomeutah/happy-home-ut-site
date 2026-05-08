@@ -85,7 +85,7 @@ const Contact = () => {
             </a>
             <a href="mailto:Jack@ahappyhomeutah.com" className="block bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth">
               <Mail className="w-7 h-7 mb-3 text-brand-deep" />
-              <div className="font-display font-bold text-xl text-brand-ink mb-1">Email Us</div>
+              <div className="font-display font-bold text-xl text-brand-ink mb-1">Email</div>
               <div className="text-muted-foreground break-all">Jack@ahappyhomeutah.com</div>
               <div className="text-sm text-muted-foreground mt-2">We reply within one business day</div>
             </a>
