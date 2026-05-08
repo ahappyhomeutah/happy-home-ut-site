@@ -1,9 +1,5 @@
-import { Instagram, Camera, Sun, Heart } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const cards = [
-  { icon: Camera, title: "Out & about", desc: "Community outings and friendships." },
-];
 
 const Social = () => {
   return (
@@ -19,18 +15,6 @@ const Social = () => {
           <p className="text-muted-foreground text-lg">
             See little moments from our home — shared with care and consent.
           </p>
-        </div>
-
-        <div className="grid gap-5 mb-10 max-w-md mx-auto">
-          {cards.map((c) => (
-            <div key={c.title} className="bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth text-center">
-              <div className="w-14 h-14 rounded-2xl bg-brand-soft flex items-center justify-center mx-auto mb-4">
-                <c.icon className="w-6 h-6 text-brand-deep" />
-              </div>
-              <div className="font-display font-bold text-brand-ink mb-1">{c.title}</div>
-              <div className="text-sm text-muted-foreground">{c.desc}</div>
-            </div>
-          ))}
         </div>
 
         <div className="text-center">
