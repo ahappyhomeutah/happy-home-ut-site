@@ -2,7 +2,6 @@ import { Instagram, Camera, Sun, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const cards = [
-  { icon: Sun, title: "Sunny mornings", desc: "Breakfast routines that start the day right." },
   { icon: Heart, title: "Little wins", desc: "Celebrating the goals that matter most." },
   { icon: Camera, title: "Out & about", desc: "Community outings and friendships." },
 ];
@@ -23,7 +22,7 @@ const Social = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-5 mb-10">
+        <div className="grid sm:grid-cols-2 gap-5 mb-10">
           {cards.map((c) => (
             <div key={c.title} className="bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth text-center">
               <div className="w-14 h-14 rounded-2xl bg-brand-soft flex items-center justify-center mx-auto mb-4">
