@@ -21,7 +21,7 @@ const Social = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-5 mb-10">
+        <div className="grid gap-5 mb-10 max-w-md mx-auto">
           {cards.map((c) => (
             <div key={c.title} className="bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth text-center">
               <div className="w-14 h-14 rounded-2xl bg-brand-soft flex items-center justify-center mx-auto mb-4">
