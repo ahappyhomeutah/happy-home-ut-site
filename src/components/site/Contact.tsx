@@ -79,7 +79,7 @@ const Contact = () => {
             </div>
             <a href="tel:+18016997228" className="block bg-gradient-hero rounded-3xl p-7 text-white shadow-card hover:shadow-glow transition-smooth">
               <Phone className="w-7 h-7 mb-3" />
-              <div className="font-display font-bold text-xl mb-1">Call/Text the Owner! </div>
+              <div className="font-display font-bold text-xl mb-1">Call/Text</div>
               <div className="text-white/90">801-699-7228</div>
               <div className="text-sm text-white/75 mt-2">Mon–Fri, 9am – 5pm MT</div>
             </a>
