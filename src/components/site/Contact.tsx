@@ -208,8 +208,8 @@ const Contact = () => {
                   <Textarea id="message" rows={5} value={form.message} onChange={(e) => update("message", e.target.value)} placeholder="Tell us a bit about what you're looking for..." />
                 </div>
 
-                <Button type="submit" variant="brand" size="lg" className="w-full">
-                  Send Message <Send className="w-4 h-4 ml-1" />
+                <Button type="submit" variant="brand" size="lg" className="w-full" disabled={isSending}>
+                  {isSending ? "Sending..." : "Send Message"} <Send className="w-4 h-4 ml-1" />
                 </Button>
               </form>
             )}
