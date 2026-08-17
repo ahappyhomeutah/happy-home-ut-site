@@ -21,13 +21,14 @@ const schema = z.object({
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [form, setForm] = useState({
     name: "", role: "", phone: "", email: "", about: "", services: "", message: "",
   });
 
   const update = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = schema.safeParse(form);
     if (!result.success) {
@@ -38,8 +39,50 @@ const Contact = () => {
       });
       return;
     }
-    setSubmitted(true);
-    toast({ title: "Message received", description: "Thanks! We'll be in touch soon." });
+
+    setIsSending(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "c7751474-3444-4025-ae9b-5624aa6ebb6e",
+          subject: `New website inquiry from ${form.name}`,
+          from_name: "A Happy Home Website",
+          name: form.name,
+          role: form.role,
+          phone: form.phone,
+          email: form.email,
+          "who the inquiry is about": form.about,
+          "services interested in": form.services,
+          message: form.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setForm({ name: "", role: "", phone: "", email: "", about: "", services: "", message: "" });
+        toast({ title: "Message received", description: "Thanks! We'll be in touch soon." });
+      } else {
+        toast({
+          title: "Something went wrong",
+          description: "Something went wrong - please call or text 801-699-7228",
+          variant: "destructive",
+        });
+      }
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "Something went wrong - please call or text 801-699-7228",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
