@@ -35,7 +35,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-20 lg:py-28 bg-gradient-soft">
+    <section id="services" aria-label="Our services" className="py-20 lg:py-28 bg-gradient-soft">
       <div className="container">
         <div className="max-w-2xl mx-auto text-center mb-14">
           <span className="inline-block px-4 py-1.5 rounded-full bg-brand-soft text-brand-deep text-sm font-semibold mb-4">

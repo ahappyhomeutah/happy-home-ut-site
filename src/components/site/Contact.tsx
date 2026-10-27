@@ -102,7 +102,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-background">
+    <section id="contact" aria-label="Contact" className="py-20 lg:py-28 bg-background">
       <div className="container">
         <div className="max-w-2xl mx-auto text-center mb-12">
           <span className="inline-block px-4 py-1.5 rounded-full bg-brand-soft text-brand-deep text-sm font-semibold mb-4">
@@ -179,6 +179,7 @@ const Contact = () => {
                       value={form.name}
                       onChange={(e) => update("name", e.target.value)}
                       placeholder="Jane Doe"
+                      autoComplete="name"
                       aria-required="true"
                       aria-invalid={!!errors.name}
                       aria-describedby={errors.name ? "name-error" : undefined}
@@ -212,7 +213,7 @@ const Contact = () => {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" type="tel" value={form.phone} onChange={(e) => update("phone", e.target.value)} placeholder="" />
+                    <Input id="phone" type="tel" autoComplete="tel" value={form.phone} onChange={(e) => update("phone", e.target.value)} placeholder="" />
                   </div>
                   <div>
                     <Label htmlFor="email">Email <span className="text-destructive" aria-hidden="true">*</span></Label>
@@ -222,6 +223,7 @@ const Contact = () => {
                       value={form.email}
                       onChange={(e) => update("email", e.target.value)}
                       placeholder="you@example.com"
+                      autoComplete="email"
                       aria-required="true"
                       aria-invalid={!!errors.email}
                       aria-describedby={errors.email ? "email-error" : undefined}

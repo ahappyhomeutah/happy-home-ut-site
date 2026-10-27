@@ -11,7 +11,7 @@ const points = [
 
 const WhyUs = () => {
   return (
-    <section id="why" className="py-20 lg:py-28 bg-background">
+    <section id="why" aria-label="Why choose A Happy Home" className="py-20 lg:py-28 bg-background">
       <div className="container">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-28">

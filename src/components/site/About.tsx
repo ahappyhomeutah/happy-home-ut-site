@@ -10,7 +10,7 @@ const points = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 lg:py-28 bg-gradient-soft">
+    <section id="about" aria-label="About A Happy Home" className="py-20 lg:py-28 bg-gradient-soft">
       <div className="container grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div className="relative order-2 lg:order-1">
           <div className="absolute -inset-4 bg-brand/20 rounded-[2rem] blur-2xl" />

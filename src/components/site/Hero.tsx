@@ -4,7 +4,7 @@ import heroImg from "@/assets/hero-home.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-gradient-hero">
+    <section id="home" aria-label="Introduction" className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-gradient-hero">
       {/* decorative blobs */}
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-32 -right-20 w-[28rem] h-[28rem] bg-brand-deep/20 rounded-full blur-3xl" />

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Social = () => {
   return (
-    <section className="py-20 lg:py-24 bg-background">
+    <section aria-label="Instagram" className="py-20 lg:py-24 bg-background">
       <div className="container">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="inline-block px-4 py-1.5 rounded-full bg-brand-soft text-brand-deep text-sm font-semibold mb-4">

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Careers = () => {
   return (
-    <section id="careers" className="py-20 lg:py-24 bg-gradient-soft">
+    <section id="careers" aria-label="Careers" className="py-20 lg:py-24 bg-gradient-soft">
       <div className="container">
         <div className="bg-gradient-hero rounded-[2rem] p-8 sm:p-12 lg:p-16 text-white shadow-card overflow-hidden relative">
           <div className="absolute -top-16 -right-16 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
