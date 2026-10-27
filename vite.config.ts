@@ -12,6 +12,11 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+  // Skip Vite's inline module-preload polyfill so a strict `script-src 'self'`
+  // CSP needs no 'unsafe-inline' (all modern browsers support modulepreload).
+  build: {
+    modulePreload: { polyfill: false },
+  },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {

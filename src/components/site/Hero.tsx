@@ -27,7 +27,7 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-3 mb-10">
             <Button asChild variant="onBrand" size="xl">
-              <a href="#contact">Contact Us <ArrowRight className="w-5 h-5 ml-1" /></a>
+              <a href="#contact">Contact Us <ArrowRight className="w-5 h-5 ml-1" aria-hidden="true" /></a>
             </Button>
             <Button asChild variant="outlineLight" size="xl">
               <a href="#contact">Make a Referral</a>

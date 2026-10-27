@@ -56,8 +56,8 @@ const Services = () => {
               className="group bg-gradient-card rounded-3xl p-7 shadow-soft hover:shadow-card border border-border hover:border-brand/40 transition-smooth"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <div className="w-14 h-14 rounded-2xl bg-brand-soft flex items-center justify-center mb-5 group-hover:bg-brand group-hover:scale-110 transition-smooth">
-                <s.icon className="w-7 h-7 text-brand-deep group-hover:text-white transition-smooth" />
+              <div className="w-14 h-14 rounded-2xl bg-brand-soft flex items-center justify-center mb-5 group-hover:bg-brand-deep group-hover:scale-110 transition-smooth">
+                <s.icon className="w-7 h-7 text-brand-deep group-hover:text-white transition-smooth" aria-hidden="true" />
               </div>
               <h3 className="font-display font-bold text-xl text-brand-ink mb-2">{s.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{s.desc}</p>

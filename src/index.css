@@ -13,8 +13,8 @@
     --background: 0 0% 100%;
     --foreground: 215 35% 22%;
 
-    --brand: 214 41% 76%;            /* #a7bddb — exact logo blue */
-    --brand-deep: 214 38% 52%;       /* same hue, deeper — harmonizes w/ logo */
+    --brand: 214 41% 76%;            /* #a7bddb — exact logo blue (decorative use only) */
+    --brand-deep: 214 40% 45%;       /* WCAG AA: 5.3:1 on white & 4.8:1 on brand-soft — text/CTA safe */
     --brand-soft: 214 60% 96%;       /* very soft tint of logo blue */
     --brand-ink: 214 35% 28%;        /* readable dark blue text, same hue family */
 
@@ -24,7 +24,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 35% 22%;
 
-    --primary: 212 60% 65%;
+    --primary: 212 50% 44%;          /* WCAG AA: white text 5.4:1; also used as focus ring */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 212 70% 95%;
@@ -36,17 +36,17 @@
     --accent: 212 80% 92%;
     --accent-foreground: 218 55% 30%;
 
-    --destructive: 0 70% 55%;
+    --destructive: 0 72% 42%;        /* WCAG AA: 6.1:1 as error text, 6.5:1 with white */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 212 35% 90%;
-    --input: 212 35% 90%;
-    --ring: 212 60% 65%;
+    --border: 212 35% 90%;           /* soft, decorative card edges only */
+    --input: 214 30% 58%;            /* WCAG 1.4.11: 3.3:1 form-field boundary on white */
+    --ring: 212 50% 44%;             /* WCAG 1.4.11: 5.4:1 focus indicator on white */
 
     --radius: 1.25rem;
 
-    /* Gradients — all built from the logo blue (#a7bddb) for a cohesive flow */
-    --gradient-hero: linear-gradient(135deg, hsl(214 50% 82%) 0%, hsl(214 41% 76%) 50%, hsl(214 40% 64%) 100%);
+    /* Gradients — deepened logo-blue family so white text clears WCAG AA (>=4.5:1) */
+    --gradient-hero: linear-gradient(135deg, hsl(214 42% 44%) 0%, hsl(214 42% 40%) 50%, hsl(214 42% 36%) 100%);
     --gradient-soft: linear-gradient(180deg, hsl(214 60% 97%) 0%, hsl(0 0% 100%) 100%);
     --gradient-card: linear-gradient(160deg, hsl(214 70% 98%) 0%, hsl(0 0% 100%) 100%);
 
@@ -95,4 +95,49 @@
   .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .transition-smooth { transition: var(--transition-smooth); }
+}
+
+@layer base {
+  /* WCAG 2.4.7 — visible keyboard focus for links and bare interactive elements
+     that don't already carry the ring-based focus style. */
+  a:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* WCAG 2.4.1 — skip link, off-screen until focused. */
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.75rem;
+    background: hsl(var(--brand-ink));
+    color: #fff;
+    font-weight: 600;
+    box-shadow: var(--shadow-card);
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+  }
+}
+
+/* WCAG 2.3.3 / 2.2.2 — honor the OS "reduce motion" setting. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

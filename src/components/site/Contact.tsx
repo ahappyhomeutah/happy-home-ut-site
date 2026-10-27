@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Phone, Mail, Send, CheckCircle2 } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "@/components/ui/sonner";
 import ownerImg from "@/assets/owner.jpg";
 
 const schema = z.object({
@@ -22,24 +22,44 @@ const schema = z.object({
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [form, setForm] = useState({
     name: "", role: "", phone: "", email: "", about: "", services: "", message: "",
   });
 
-  const update = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
+  const update = (k: string, v: string) => {
+    setForm((f) => ({ ...f, [k]: v }));
+    // Clear a field's error as soon as the person edits it (WCAG 3.3.1).
+    setErrors((e) => {
+      if (!e[k]) return e;
+      const next = { ...e };
+      delete next[k];
+      return next;
+    });
+  };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = schema.safeParse(form);
     if (!result.success) {
-      toast({
-        title: "Please check your form",
-        description: result.error.issues[0]?.message ?? "Some fields need attention.",
-        variant: "destructive",
+      const fieldErrors: Record<string, string> = {};
+      for (const issue of result.error.issues) {
+        const key = String(issue.path[0] ?? "");
+        if (key && !fieldErrors[key]) fieldErrors[key] = issue.message;
+      }
+      setErrors(fieldErrors);
+      // Move focus to the first field with an error so keyboard/AT users land on it.
+      const firstKey = result.error.issues[0]?.path[0];
+      if (firstKey) {
+        requestAnimationFrame(() => document.getElementById(String(firstKey))?.focus());
+      }
+      toast.error("Please check your form", {
+        description: "Some fields need your attention — they're marked below.",
       });
       return;
     }
 
+    setErrors({});
     setIsSending(true);
 
     try {
@@ -66,19 +86,15 @@ const Contact = () => {
       if (response.ok) {
         setSubmitted(true);
         setForm({ name: "", role: "", phone: "", email: "", about: "", services: "", message: "" });
-        toast({ title: "Message received", description: "Thanks! We'll be in touch soon." });
+        toast.success("Message received", { description: "Thanks! We'll be in touch soon." });
       } else {
-        toast({
-          title: "Something went wrong",
-          description: "Something went wrong - please call or text 801-699-7228",
-          variant: "destructive",
+        toast.error("Something went wrong", {
+          description: "Please call or text 801-699-7228.",
         });
       }
     } catch {
-      toast({
-        title: "Something went wrong",
-        description: "Something went wrong - please call or text 801-699-7228",
-        variant: "destructive",
+      toast.error("Something went wrong", {
+        description: "Please call or text 801-699-7228.",
       });
     } finally {
       setIsSending(false);
@@ -121,13 +137,13 @@ const Contact = () => {
               </div>
             </div>
             <a href="tel:+18016997228" className="block bg-gradient-hero rounded-3xl p-7 text-white shadow-card hover:shadow-glow transition-smooth">
-              <Phone className="w-7 h-7 mb-3" />
+              <Phone className="w-7 h-7 mb-3" aria-hidden="true" />
               <div className="font-display font-bold text-xl mb-1">Call/Text</div>
               <div className="text-white/90">801-699-7228</div>
-              <div className="text-sm text-white/75 mt-2">Mon–Fri, 9am – 5pm MT</div>
+              <div className="text-sm text-white/90 mt-2">Mon–Fri, 9am – 5pm MT</div>
             </a>
             <a href="mailto:Jack@ahappyhomeutah.com" className="block bg-gradient-card border border-border rounded-3xl p-7 shadow-soft hover:shadow-card transition-smooth">
-              <Mail className="w-7 h-7 mb-3 text-brand-deep" />
+              <Mail className="w-7 h-7 mb-3 text-brand-deep" aria-hidden="true" />
               <div className="font-display font-bold text-xl text-brand-ink mb-1">Email</div>
               <div className="text-muted-foreground break-all">Jack@ahappyhomeutah.com</div>
               <div className="text-sm text-muted-foreground mt-2">We reply within one business day</div>
@@ -151,16 +167,35 @@ const Contact = () => {
                 </p>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="bg-gradient-card border border-border rounded-3xl p-6 sm:p-8 shadow-card space-y-4">
+              <form onSubmit={onSubmit} noValidate className="bg-gradient-card border border-border rounded-3xl p-6 sm:p-8 shadow-card space-y-4">
+                <p className="text-sm text-muted-foreground">
+                  Fields marked <span className="text-destructive font-semibold">*</span> are required.
+                </p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="name">Your name *</Label>
-                    <Input id="name" value={form.name} onChange={(e) => update("name", e.target.value)} placeholder="Jane Doe" />
+                    <Label htmlFor="name">Your name <span className="text-destructive" aria-hidden="true">*</span></Label>
+                    <Input
+                      id="name"
+                      value={form.name}
+                      onChange={(e) => update("name", e.target.value)}
+                      placeholder="Jane Doe"
+                      aria-required="true"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                    />
+                    {errors.name && <p id="name-error" role="alert" className="text-destructive text-sm mt-1">{errors.name}</p>}
                   </div>
                   <div>
-                    <Label htmlFor="role">I am a... *</Label>
+                    <Label htmlFor="role">I am a... <span className="text-destructive" aria-hidden="true">*</span></Label>
                     <Select value={form.role} onValueChange={(v) => update("role", v)}>
-                      <SelectTrigger id="role"><SelectValue placeholder="Select role" /></SelectTrigger>
+                      <SelectTrigger
+                        id="role"
+                        aria-required="true"
+                        aria-invalid={!!errors.role}
+                        aria-describedby={errors.role ? "role-error" : undefined}
+                      >
+                        <SelectValue placeholder="Select role" />
+                      </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="guardian">Guardian / Family member</SelectItem>
                         <SelectItem value="coordinator">Support Coordinator</SelectItem>
@@ -170,6 +205,7 @@ const Contact = () => {
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
+                    {errors.role && <p id="role-error" role="alert" className="text-destructive text-sm mt-1">{errors.role}</p>}
                   </div>
                 </div>
 
@@ -179,20 +215,30 @@ const Contact = () => {
                     <Input id="phone" type="tel" value={form.phone} onChange={(e) => update("phone", e.target.value)} placeholder="" />
                   </div>
                   <div>
-                    <Label htmlFor="email">Email *</Label>
-                    <Input id="email" type="email" value={form.email} onChange={(e) => update("email", e.target.value)} placeholder="you@example.com" />
+                    <Label htmlFor="email">Email <span className="text-destructive" aria-hidden="true">*</span></Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={form.email}
+                      onChange={(e) => update("email", e.target.value)}
+                      placeholder="you@example.com"
+                      aria-required="true"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? "email-error" : undefined}
+                    />
+                    {errors.email && <p id="email-error" role="alert" className="text-destructive text-sm mt-1">{errors.email}</p>}
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="about">Who are you contacting us about?</Label>
-                  <Input id="about" value={form.about} onChange={(e) => update("about", e.target.value)} placeholder="A loved one's name or initials" />
+                  <Label htmlFor="contact-about">Who are you contacting us about?</Label>
+                  <Input id="contact-about" value={form.about} onChange={(e) => update("about", e.target.value)} placeholder="A loved one's name or initials" />
                 </div>
 
                 <div>
-                  <Label htmlFor="services">Services you're interested in</Label>
+                  <Label htmlFor="contact-services">Services you're interested in</Label>
                   <Select value={form.services} onValueChange={(v) => update("services", v)}>
-                    <SelectTrigger id="services"><SelectValue placeholder="Select an option" /></SelectTrigger>
+                    <SelectTrigger id="contact-services"><SelectValue placeholder="Select an option" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="residential">Residential Habilitation</SelectItem>
                       <SelectItem value="daily-living">Daily Living Support</SelectItem>
@@ -204,12 +250,22 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="message">Message *</Label>
-                  <Textarea id="message" rows={5} value={form.message} onChange={(e) => update("message", e.target.value)} placeholder="Tell us a bit about what you're looking for..." />
+                  <Label htmlFor="message">Message <span className="text-destructive" aria-hidden="true">*</span></Label>
+                  <Textarea
+                    id="message"
+                    rows={5}
+                    value={form.message}
+                    onChange={(e) => update("message", e.target.value)}
+                    placeholder="Tell us a bit about what you're looking for..."
+                    aria-required="true"
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                  />
+                  {errors.message && <p id="message-error" role="alert" className="text-destructive text-sm mt-1">{errors.message}</p>}
                 </div>
 
                 <Button type="submit" variant="brand" size="lg" className="w-full" disabled={isSending}>
-                  {isSending ? "Sending..." : "Send Message"} <Send className="w-4 h-4 ml-1" />
+                  {isSending ? "Sending..." : "Send Message"} <Send className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Button>
               </form>
             )}

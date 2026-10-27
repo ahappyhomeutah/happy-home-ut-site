@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import { Instagram, Phone, Mail } from "lucide-react";
 
@@ -39,16 +40,20 @@ const Footer = () => {
           <div>
             <div className="font-display font-semibold mb-3">Get in Touch</div>
             <ul className="space-y-2 text-white/75 text-sm">
-              <li><a href="tel:+18016997228" className="flex items-center gap-2 hover:text-white"><Phone className="w-4 h-4" /> (801) 699-7228</a></li>
-              <li><a href="mailto:Jack@ahappyhomeutah.com" className="flex items-center gap-2 hover:text-white"><Mail className="w-4 h-4" /> Email us</a></li>
-              <li><a href="https://instagram.com/ahappyhome.ut" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white"><Instagram className="w-4 h-4" /> @ahappyhome.ut</a></li>
+              <li><a href="tel:+18016997228" className="flex items-center gap-2 hover:text-white"><Phone className="w-4 h-4" aria-hidden="true" /> (801) 699-7228</a></li>
+              <li><a href="mailto:Jack@ahappyhomeutah.com" className="flex items-center gap-2 hover:text-white"><Mail className="w-4 h-4" aria-hidden="true" /> Email us</a></li>
+              <li><a href="https://instagram.com/ahappyhome.ut" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white"><Instagram className="w-4 h-4" aria-hidden="true" /> @ahappyhome.ut</a></li>
               <li className="pt-2 text-white/60">Service area: Utah</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/15 grid md:grid-cols-2 gap-4 text-xs text-white/60">
-          <p>© {new Date().getFullYear()} A Happy Home. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} A Happy Home. All rights reserved.
+            {" · "}
+            <Link to="/accessibility" className="underline hover:text-white">Accessibility Statement</Link>
+          </p>
           <p className="md:text-right max-w-xl md:ml-auto leading-relaxed">
             Information on this website is general and not a guarantee of eligibility,
             placement, or services. Services depend on individual needs, authorizations,

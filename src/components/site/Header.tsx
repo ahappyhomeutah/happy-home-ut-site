@@ -48,7 +48,7 @@ const Header = () => {
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-1">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -62,7 +62,7 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           <Button asChild variant="ghost" size="sm" className="text-brand-deep hover:bg-brand-soft">
-            <a href="tel:+18016997228"><Phone className="w-4 h-4 mr-1.5" /> Call Now</a>
+            <a href="tel:+18016997228"><Phone className="w-4 h-4 mr-1.5" aria-hidden="true" /> Call Now</a>
           </Button>
           <Button asChild variant="brand" size="sm">
             <a href="#contact">Contact Us</a>
@@ -70,17 +70,19 @@ const Header = () => {
         </div>
 
         <button
-          className="lg:hidden p-2 rounded-lg text-brand-ink hover:bg-brand-soft transition-smooth"
+          className="lg:hidden p-2 rounded-lg text-brand-ink hover:bg-brand-soft transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls={open ? "mobile-menu" : undefined}
         >
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {open ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background border-t border-border shadow-card">
-          <nav className="container py-4 flex flex-col gap-1">
+        <div id="mobile-menu" className="lg:hidden bg-background border-t border-border shadow-card">
+          <nav aria-label="Primary (mobile)" className="container py-4 flex flex-col gap-1">
             {NAV.map((item) => (
               <a
                 key={item.href}
@@ -93,7 +95,7 @@ const Header = () => {
             ))}
             <div className="flex gap-2 mt-3 pt-3 border-t border-border">
               <Button asChild variant="outline" className="flex-1">
-                <a href="tel:+18016997228"><Phone className="w-4 h-4 mr-1.5" /> Call</a>
+                <a href="tel:+18016997228"><Phone className="w-4 h-4 mr-1.5" aria-hidden="true" /> Call</a>
               </Button>
               <Button asChild variant="brand" className="flex-1">
                 <a href="#contact" onClick={() => setOpen(false)}>Contact</a>

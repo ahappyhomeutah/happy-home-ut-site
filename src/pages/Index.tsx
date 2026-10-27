@@ -11,8 +11,9 @@ import Footer from "@/components/site/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <Services />
         <WhyUs />

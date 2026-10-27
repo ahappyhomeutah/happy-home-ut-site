@@ -20,7 +20,7 @@ const Social = () => {
         <div className="text-center">
           <Button asChild variant="brand" size="lg">
             <a href="https://www.instagram.com/ahappyhome.ut/" target="_blank" rel="noopener noreferrer">
-              <Instagram className="w-5 h-5 mr-1" /> @ahappyhome.ut
+              <Instagram className="w-5 h-5 mr-1" aria-hidden="true" /> @ahappyhome.ut
             </a>
           </Button>
         </div>

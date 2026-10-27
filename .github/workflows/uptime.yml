@@ -1,0 +1,33 @@
+name: Uptime check
+
+# Pings the live site on a schedule. If it is down or the homepage content is
+# missing, the workflow fails and GitHub emails the repo owner.
+# NOTE: GitHub disables scheduled workflows after 60 days with no repo activity.
+# If the site rarely changes, run this manually now and then, or use a free
+# external monitor (e.g. UptimeRobot) as a backstop.
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping ahappyhomeut.com
+        run: |
+          code=$(curl -s -o /tmp/body.html -w "%{http_code}" -L --max-time 30 https://ahappyhomeut.com/)
+          echo "HTTP status: $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::Site returned HTTP $code"
+            exit 1
+          fi
+          if ! grep -qi "A Happy Home" /tmp/body.html; then
+            echo "::error::Homepage did not contain expected content (possible soft failure)"
+            exit 1
+          fi
+          echo "Site is up and serving the expected content."
